@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday My Wolf - Anamika 💜 | From Bhavesh</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Poppins, Pacifico, Satisfy, Great Vibes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Poppins:wght@300;400;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            btsPurple: '#9333ea',
+            btsLightPurple: '#e9d5ff',
+            btsSoftLilac: '#f3e8ff',
+            btsDarkPurple: '#581c87',
+            btsPink: '#f472b6',
+            btsNeon: '#d8b4fe'
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            handwriting: ['Satisfy', 'cursive'],
+            cursive: ['Pacifico', 'cursive'],
+            wolfTitle: ['Great Vibes', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f3e8ff;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c084fc;
+      border-radius: 999px;
+    }
+
+    /* Floating Canvas */
+    #hearts-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glassmorphism */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid rgba(216, 180, 254, 0.6);
+      box-shadow: 0 20px 40px rgba(147, 51, 234, 0.15);
+    }
+
+    .neon-text {
+      text-shadow: 0 0 10px #c084fc, 0 0 20px #e879f9, 0 0 30px #f472b6;
+    }
+
+    /* Animations */
+    @keyframes bounceTitle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .bounce-title {
+      animation: bounceTitle 2.5s ease-in-out infinite;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      80% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .pop-in {
+      animation: popIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes pulseWiggle {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(1.05) rotate(-3deg); }
+      75% { transform: scale(1.05) rotate(3deg); }
+    }
+    .pulse-wiggle {
+      animation: pulseWiggle 2s ease-in-out infinite;
+    }
+
+    /* Spinning Record */
+    @keyframes spinRecord {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spinning-vinyl {
+      animation: spinRecord 5s linear infinite;
+    }
+    .paused-vinyl {
+      animation-play-state: paused;
+    }
+
+    /* Interactive Character Animations */
+    .character-pop-out {
+      animation: popOutLook 3.5s ease-in-out forwards;
+    }
+
+    @keyframes popOutLook {
+      0% { transform: translateY(100px) scale(0.2); opacity: 0; }
+      20% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+      30% { transform: translateY(0) scale(1); opacity: 1; }
+      80% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(120px) scale(0.2); opacity: 0; }
+    }
+
+    .blush-cheek {
+      fill: #f43f5e;
+      opacity: 0.8;
+      animation: blushPulse 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes blushPulse {
+      from { opacity: 0.4; }
+      to { opacity: 0.9; }
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-purple-200 via-fuchsia-100 to-indigo-200 font-poppins min-h-screen text-gray-800 relative overflow-x-hidden select-none">
+
+  <!-- Floating Upward Glowing Hearts Background -->
+  <canvas id="hearts-canvas"></canvas>
+
+  <main class="relative z-10 max-w-5xl mx-auto px-4 py-6 md:py-10 space-y-12">
+
+    <!-- HERO HEADER SECTION -->
+    <header class="glass-card rounded-3xl p-6 md:p-10 text-center relative overflow-hidden transition-all duration-300">
+      
+      <!-- Top Title -->
+      <h1 class="font-wolfTitle text-4xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-800 via-fuchsia-600 to-pink-600 bounce-title tracking-wide mb-2">
+        HAPPY BIRTHDAY MY WOLF 🐺💜
+      </h1>
+
+      <!-- Pop-in Glowing Name -->
+      <div class="my-4">
+        <h2 class="pop-in text-4xl md:text-8xl font-extrabold text-purple-900 tracking-wider font-handwriting neon-text">
+          ANAMIKA
+        </h2>
+      </div>
+
+      <!-- Hinglish Subtitle -->
+      <p class="text-sm md:text-xl text-purple-900 font-semibold max-w-2xl mx-auto italic mt-3 bg-purple-100/80 py-2 px-4 rounded-full border border-purple-300 shadow-sm">
+        "Tu meri sabse pyari wolf ho, meri poori duniya bas tujhse hi shuru hoti hai aur tujhpe hi khatam! ✨"
+      </p>
+
+      <!-- Romantic Acoustic Song Player Widget -->
+      <div class="mt-8 bg-white/95 rounded-2xl p-4 max-w-md mx-auto shadow-md border border-purple-300 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <!-- Spinning Vinyl -->
+          <div id="vinyl-disk" class="relative w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center shadow-md border-2 border-purple-400 paused-vinyl">
+            <div class="w-4 h-4 rounded-full bg-pink-500 border-2 border-white flex items-center justify-center">
+              <div class="w-1 h-1 rounded-full bg-slate-900"></div>
+            </div>
+          </div>
+          <div class="text-left">
+            <p class="text-[10px] uppercase font-bold text-purple-600 tracking-wider">Romantic Acoustic English Track</p>
+            <h3 class="text-xs md:text-sm font-bold text-gray-800">Until I Found You - Romantic Guitar Acoustic 🎸</h3>
+            <p class="text-[11px] text-gray-500">Playing for Anamika ❤️</p>
+          </div>
+        </div>
+
+        <!-- Play/Pause Button -->
+        <button id="music-btn" onclick="toggleMusic()" class="w-11 h-11 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white flex items-center justify-center text-sm shadow-md hover:scale-105 active:scale-95 transition-all">
+          <i id="music-icon" class="fa-solid fa-play ml-0.5"></i>
+        </button>
+      </div>
+    </header>
+
+
+    <!-- 4 HUMAN BABIES CHARACTER SECTION -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      
+      <!-- Baby 1: Happy Birthday My Love -->
+      <div class="glass-card p-4 rounded-2xl text-center hover:-translate-y-2 transition-all duration-300 shadow-lg">
+        <div class="w-20 h-20 mx-auto mb-2">
+          <!-- Baby SVG 1 -->
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="50" cy="50" r="35" fill="#fde047"/> <!-- Cute Yellow Outfit -->
+            <circle cx="50" cy="42" r="28" fill="#fbeb3f"/> <!-- Baby Head -->
+            <circle cx="50" cy="42" r="26" fill="#fde047"/>
+            <circle cx="50" cy="42" r="24" fill="#fed7aa"/> <!-- Skin -->
+            <!-- Eyes & Smile -->
+            <circle cx="40" cy="38" r="3" fill="#000"/>
+            <circle cx="60" cy="38" r="3" fill="#000"/>
+            <path d="M 42 48 Q 50 56 58 48" stroke="#000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="34" cy="44" r="3" class="blush-cheek"/>
+            <circle cx="66" cy="44" r="3" class="blush-cheek"/>
+            <!-- Baby Hair Curl -->
+            <path d="M 50 18 Q 48 10 54 14" stroke="#78350f" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- Party Hat -->
+            <polygon points="50,2 40,18 60,18" fill="#ec4899"/>
+          </svg>
+        </div>
+        <p class="font-bold text-xs text-purple-900">Baby 1 Says:</p>
+        <span class="inline-block mt-1 bg-pink-100 text-pink-700 text-xs font-bold px-2.5 py-1 rounded-full border border-pink-200">
+          "Happy birthday my love 🎂✨"
+        </span>
+      </div>
+
+      <!-- Baby 2: Tch! -->
+      <div class="glass-card p-4 rounded-2xl text-center hover:-translate-y-2 transition-all duration-300 shadow-lg">
+        <div class="w-20 h-20 mx-auto mb-2">
+          <!-- Baby SVG 2 (Pouting) -->
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="50" cy="50" r="35" fill="#a7f3d0"/>
+            <circle cx="50" cy="42" r="24" fill="#fed7aa"/>
+            <!-- Pouting Eyes & Mouth -->
+            <line x1="36" y1="38" x2="44" y2="38" stroke="#000" stroke-width="2.5"/>
+            <line x1="56" y1="38" x2="64" y2="38" stroke="#000" stroke-width="2.5"/>
+            <path d="M 44 50 Q 50 44 56 50" stroke="#000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="34" cy="42" r="3" class="blush-cheek"/>
+            <circle cx="66" cy="42" r="3" class="blush-cheek"/>
+            <!-- Hair -->
+            <path d="M 50 18 Q 55 10 52 14" stroke="#78350f" stroke-width="3" fill="none"/>
+          </svg>
+        </div>
+        <p class="font-bold text-xs text-purple-900">Baby 2 Says:</p>
+        <span class="inline-block mt-1 bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-200">
+          "Tch! 😤"
+        </span>
+      </div>
+
+      <!-- Baby 3: Hinglish Loving Words -->
+      <div class="glass-card p-4 rounded-2xl text-center hover:-translate-y-2 transition-all duration-300 shadow-lg">
+        <div class="w-20 h-20 mx-auto mb-2">
+          <!-- Baby SVG 3 -->
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="50" cy="50" r="35" fill="#c084fc"/>
+            <circle cx="50" cy="42" r="24" fill="#fed7aa"/>
+            <!-- Eyes & Open Happy Mouth -->
+            <circle cx="40" cy="38" r="3" fill="#000"/>
+            <circle cx="60" cy="38" r="3" fill="#000"/>
+            <ellipse cx="50" cy="48" rx="5" ry="4" fill="#ef4444"/>
+            <circle cx="34" cy="42" r="3" class="blush-cheek"/>
+            <circle cx="66" cy="42" r="3" class="blush-cheek"/>
+            <!-- Cute Bow -->
+            <path d="M 45 18 Q 50 22 55 18" stroke="#ec4899" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="font-bold text-xs text-purple-900">Baby 3 Says:</p>
+        <span class="inline-block mt-1 bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-1 rounded-full border border-purple-200">
+          "Tu bohot pyari hai Anamika! 💖"
+        </span>
+      </div>
+
+      <!-- Baby 4: Bhavesh Loves You -->
+      <div class="glass-card p-4 rounded-2xl text-center hover:-translate-y-2 transition-all duration-300 shadow-lg">
+        <div class="w-20 h-20 mx-auto mb-2">
+          <!-- Baby SVG 4 -->
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="50" cy="50" r="35" fill="#f472b6"/>
+            <circle cx="50" cy="42" r="24" fill="#fed7aa"/>
+            <!-- Heart Eyes -->
+            <path d="M 36 38 C 36 34, 42 34, 40 38 C 42 34, 44 34, 44 38 C 44 42, 40 44, 40 44 C 40 44, 36 42, 36 38 Z" fill="#ef4444"/>
+            <path d="M 56 38 C 56 34, 62 34, 60 38 C 62 34, 64 34, 64 38 C 64 42, 60 44, 60 44 C 60 44, 56 42, 56 38 Z" fill="#ef4444"/>
+            <path d="M 44 48 Q 50 53 56 48" stroke="#000" stroke-width="2" fill="none"/>
+            <circle cx="34" cy="42" r="3" class="blush-cheek"/>
+            <circle cx="66" cy="42" r="3" class="blush-cheek"/>
+          </svg>
+        </div>
+        <p class="font-bold text-xs text-purple-900">Baby 4 Says:</p>
+        <span class="inline-block mt-1 bg-pink-100 text-pink-800 text-xs font-bold px-2.5 py-1 rounded-full border border-pink-200">
+          "Bhavesh loves you most! 🥰"
+        </span>
+      </div>
+
+    </section>
+
+
+    <!-- SPECIAL MEMORIES & INTERACTIVE CARDS -->
+    <section class="space-y-6">
+      <div class="text-center">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-purple-900 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-sparkles text-amber-400"></i>
+          Hamare Special Dates & Interactive Memories
+          <i class="fa-solid fa-sparkles text-amber-400"></i>
+        </h2>
+        <p class="text-xs md:text-sm text-purple-700 italic">Click the cards to see magic happen! ✨</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Section 1: 31st Dec Proposal Day (Interactive Shying Couple) -->
+        <div onclick="triggerProposalAnimation()" class="glass-card p-6 rounded-3xl relative border-t-4 border-fuchsia-500 cursor-pointer hover:shadow-2xl transition-all duration-300 group overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-fuchsia-600 bg-fuchsia-100 px-3 py-1 rounded-full">31st December 2025</span>
+            <span class="text-xs text-purple-600 font-bold group-hover:scale-110 transition-transform">Click Me! 👆</span>
+          </div>
+
+          <h3 class="text-xl font-extrabold text-gray-800 mt-2 mb-2">Propose Day ✨</h3>
+          <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-4">
+            Wo 31st Dec ki shaam jab maine tumhe hamesha ke liye apna banane ki baat kahi thi...
+          </p>
+
+          <!-- Illustration Placeholder -->
+          <div class="bg-purple-100/80 rounded-2xl p-4 text-center border border-purple-200 relative overflow-hidden h-28 flex items-center justify-center">
+            <p class="text-xs font-bold text-purple-800">Tap to see Boy & Girl blushing together! 🙈💍</p>
+
+            <!-- Animated Pop-out Couple Container -->
+            <div id="couple-popout" class="absolute inset-0 bg-fuchsia-50/95 flex items-center justify-center gap-4 hidden z-20">
+              <!-- Boy SVG -->
+              <div class="text-center">
+                <svg viewBox="0 0 60 60" class="w-12 h-12 inline-block">
+                  <circle cx="30" cy="30" r="22" fill="#fed7aa"/>
+                  <path d="M 12 20 Q 30 5 48 20" stroke="#1e293b" stroke-width="8" stroke-linecap="round"/>
+                  <!-- Eyes shying/looking -->
+                  <circle cx="22" cy="28" r="2" fill="#000"/>
+                  <circle cx="38" cy="28" r="2" fill="#000"/>
+                  <path d="M 26 36 Q 30 40 34 36" stroke="#000" stroke-width="2" fill="none"/>
+                  <!-- Red Blushing Cheeks -->
+                  <circle cx="18" cy="32" r="4" class="blush-cheek"/>
+                  <circle cx="42" cy="32" r="4" class="blush-cheek"/>
+                </svg>
+                <p class="text-[9px] font-bold text-purple-900">Bhavesh 🙈</p>
+              </div>
+
+              <div class="text-pink-500 font-bold text-sm">❤️</div>
+
+              <!-- Girl SVG -->
+              <div class="text-center">
+                <svg viewBox="0 0 60 60" class="w-12 h-12 inline-block">
+                  <circle cx="30" cy="30" r="22" fill="#fed7aa"/>
+                  <path d="M 10 24 C 10 8, 50 8, 50 24" stroke="#7c2d12" stroke-width="9" stroke-linecap="round"/>
+                  <circle cx="22" cy="28" r="2" fill="#000"/>
+                  <circle cx="38" cy="28" r="2" fill="#000"/>
+                  <path d="M 26 35 Q 30 38 34 35" stroke="#000" stroke-width="2" fill="none"/>
+                  <!-- Red Blushing Cheeks -->
+                  <circle cx="18" cy="32" r="4" class="blush-cheek"/>
+                  <circle cx="42" cy="32" r="4" class="blush-cheek"/>
+                </svg>
+                <p class="text-[9px] font-bold text-pink-900">Anamika 🌸</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Section 2: 25th January - First Kiss Day (Interactive Blushing Girl) -->
+        <div onclick="triggerKissAnimation()" class="glass-card p-6 rounded-3xl relative border-t-4 border-pink-500 cursor-pointer hover:shadow-2xl transition-all duration-300 group overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-pink-600 bg-pink-100 px-3 py-1 rounded-full">25th January</span>
+            <span class="text-xs text-pink-600 font-bold group-hover:scale-110 transition-transform">Click Me! 💋</span>
+          </div>
+
+          <h3 class="text-xl font-extrabold text-gray-800 mt-2 mb-2">First Kiss Day 💋</h3>
+          <p class="text-sm font-extrabold text-pink-700 italic my-3 bg-pink-50 p-2 rounded-xl text-center border border-pink-200">
+            "Yaad hai na ki bhul gayi? 🙈💋"
+          </p>
+
+          <div class="bg-pink-100/80 rounded-2xl p-3 text-center border border-pink-200 relative overflow-hidden h-20 flex items-center justify-center">
+            <p class="text-xs font-bold text-pink-800">Tap to see blushing Anamika! 🔴😊</p>
+
+            <!-- Blushing Girl Pop-out -->
+            <div id="girl-kiss-popout" class="absolute inset-0 bg-pink-100 flex items-center justify-center gap-2 hidden z-20">
+              <svg viewBox="0 0 60 60" class="w-14 h-14">
+                <circle cx="30" cy="30" r="22" fill="#fed7aa"/>
+                <path d="M 10 24 C 10 8, 50 8, 50 24" stroke="#7c2d12" stroke-width="9" stroke-linecap="round"/>
+                <circle cx="22" cy="28" r="2" fill="#000"/>
+                <circle cx="38" cy="28" r="2" fill="#000"/>
+                <!-- Kiss Smile -->
+                <path d="M 26 36 Q 30 42 34 36" stroke="#000" stroke-width="2" fill="none"/>
+                <!-- Dark Red Cheek Blush -->
+                <circle cx="16" cy="32" r="5" fill="#e11d48"/>
+                <circle cx="44" cy="32" r="5" fill="#e11d48"/>
+              </svg>
+              <div class="text-left">
+                <p class="text-xs font-extrabold text-pink-900">Uff! Red Cheeks 🙈</p>
+                <p class="text-[10px] text-pink-700">So shy & so cute!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Section 3: Anamika's Inside Joke Dialogue -->
+        <div class="glass-card p-6 rounded-3xl relative border-t-4 border-purple-600 bg-gradient-to-br from-purple-50 to-pink-50 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-purple-600 bg-purple-100 px-3 py-1 rounded-full">Her Iconic Dialogue</span>
+            <div class="my-6 text-center">
+              <h3 class="text-2xl md:text-3xl font-extrabold text-purple-900 tracking-wide font-handwriting">
+                "Chhodh do mere ko! 😂"
+              </h3>
+            </div>
+          </div>
+
+          <button onclick="triggerJokeModal()" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-xs md:text-sm shadow-md hover:from-purple-700 hover:to-pink-700 active:scale-95 transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-comment-dots"></i>
+            Click for Bhavesh's Reply!
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- POPPING CAMERA BOX PHOTO GALLERY SECTION (8 PHOTOS) -->
+    <section class="text-center space-y-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-purple-900">
+        Our Memories Vault 📸
+      </h2>
+      <p class="text-xs md:text-sm text-purple-700 italic">Click the popping camera below to open our 8 photo gallery album!</p>
+
+      <!-- Animated Popping Camera Unit -->
+      <div onclick="openPhotoModal()" class="inline-block cursor-pointer transform hover:scale-110 active:scale-95 transition-all duration-300 group">
+        <div class="glass-card p-6 md:p-8 rounded-3xl bg-gradient-to-br from-purple-100 via-pink-100 to-indigo-100 border-4 border-purple-300 shadow-2xl relative pulse-wiggle">
+          
+          <div class="w-24 h-24 md:w-32 md:h-32 mx-auto bg-gradient-to-tr from-purple-600 to-pink-500 rounded-3xl flex items-center justify-center shadow-lg relative overflow-hidden">
+            <!-- Camera Flash Lens -->
+            <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-900 border-4 border-purple-200 flex items-center justify-center">
+              <div class="w-5 h-5 rounded-full bg-sky-400 opacity-80"></div>
+            </div>
+            <!-- Flash LED -->
+            <div class="absolute top-3 right-4 w-3 h-3 bg-amber-300 rounded-full animate-ping"></div>
+          </div>
+
+          <div class="mt-4">
+            <span class="font-extrabold text-lg md:text-xl text-purple-900 tracking-wider font-poppins">
+              MEMORIES 📸
+            </span>
+            <p class="text-xs font-bold text-pink-600 mt-1">Tap to Open Album (8 Photos)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- INTERACTIVE ANIMATED ENVELOPE / LOVE LETTER SECTION -->
+    <section class="text-center space-y-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-purple-900">
+        A Secret Letter For Anamika 💌
+      </h2>
+      <p class="text-xs md:text-sm text-purple-700 italic">Click the pulsating envelope to read Bhavesh's special letter!</p>
+
+      <!-- Pulsating Animated Sealed Envelope -->
+      <div id="envelope-wrapper" onclick="openLetterModal()" class="inline-block cursor-pointer transform hover:scale-105 transition-all duration-300 pulse-wiggle">
+        <div class="w-64 md:w-80 h-40 md:h-48 bg-gradient-to-br from-purple-600 to-pink-500 rounded-2xl shadow-2xl border-4 border-purple-200 relative overflow-hidden flex items-center justify-center">
+          
+          <!-- Envelope Flap Design -->
+          <div class="absolute top-0 inset-x-0 h-24 bg-purple-700/60 clip-path-v opacity-90 border-b-2 border-purple-300"></div>
+          
+          <!-- Heart Seal -->
+          <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-pink-600 text-2xl shadow-xl z-10 border-2 border-pink-300">
+            <i class="fa-solid fa-heart animate-pulse"></i>
+          </div>
+
+          <p class="absolute bottom-3 text-white font-bold text-xs md:text-sm tracking-wider">
+            TAP TO UNFOLD LETTER 💌
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- LOVE PERCENTAGE METER -->
+    <section class="glass-card p-6 md:p-8 rounded-3xl text-center space-y-4">
+      <h3 class="text-xl md:text-2xl font-extrabold text-purple-900">
+        How Much Does Bhavesh Love Anamika? 📊💜
+      </h3>
+
+      <div class="max-w-md mx-auto bg-purple-100/90 rounded-2xl p-4 border border-purple-300">
+        <div id="love-bar" class="w-0 bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 h-7 rounded-xl transition-all duration-1000 flex items-center justify-end pr-2 text-white text-xs font-extrabold shadow">
+        </div>
+        <div id="love-result" class="mt-3 font-extrabold text-lg text-purple-900 hidden">
+          1000000% Love! (Beyond Infinity & Eternal! ♾️💜)
+        </div>
+      </div>
+
+      <button onclick="calculateLove()" class="py-2.5 px-6 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs md:text-sm shadow transition-all active:scale-95">
+        Calculate Love Score ✨
+      </button>
+    </section>
+
+
+    <!-- SPECIAL POPPING GIFT BOX SECTION -->
+    <section class="glass-card p-6 md:p-10 rounded-3xl text-center space-y-6 bg-gradient-to-b from-purple-50 to-pink-100 border-2 border-purple-300">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-purple-900">
+        Your Birthday Surprise Gift 🎁✨
+      </h2>
+      <p class="text-xs md:text-sm text-purple-700 italic">Click the gift box to unwrap your special promise!</p>
+
+      <!-- Gift Box Wrapper -->
+      <div id="gift-wrapper" onclick="openGift()" class="inline-block cursor-pointer transform hover:scale-110 active:scale-95 transition-all duration-300">
+        <div class="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-3xl shadow-2xl relative flex items-center justify-center border-4 border-pink-200">
+          <!-- Ribbon Lines -->
+          <div class="absolute inset-y-0 w-8 bg-amber-300 border-x border-amber-400"></div>
+          <div class="absolute inset-x-0 h-8 bg-amber-300 border-y border-amber-400"></div>
+          <!-- Bow -->
+          <div class="absolute -top-4 w-12 h-8 bg-amber-400 rounded-full border-2 border-amber-500 flex items-center justify-center font-bold text-xs text-amber-900 shadow">
+            🎀
+          </div>
+        </div>
+      </div>
+
+      <!-- Unwrapped Gift Content (Revealed on Click) -->
+      <div id="gift-content" class="hidden max-w-md mx-auto bg-white p-6 rounded-3xl shadow-2xl border-4 border-purple-300 text-center space-y-4 pop-in">
+        <div class="w-20 h-20 mx-auto bg-purple-100 rounded-full flex items-center justify-center text-4xl shadow-inner border border-purple-300">
+          🧑‍🦱
+        </div>
+        
+        <h3 class="text-xl font-extrabold text-purple-900">
+          Bhavesh's Forever Promise 🤝❤️
+        </h3>
+
+        <div class="bg-purple-50 p-4 rounded-2xl border-l-4 border-purple-600 text-sm font-bold text-purple-900 leading-relaxed italic">
+          "Mai hamesha tere sath hu, mujhe kabhi mat chhodhna... ❤️ 🤝"
+        </div>
+
+        <p class="text-xs text-gray-600">
+          Chahe jo bhi ho jaye, main hamesha tumhare paas rahunga, Anamika! Happy Birthday once again my Wolf! 💜
+        </p>
+      </div>
+    </section>
+
+
+    <!-- FOOTER SIGNATURE -->
+    <footer class="text-center py-6 border-t border-purple-300/60 text-purple-900 space-y-2">
+      <p class="font-bold text-sm md:text-base">
+        Developed with endless love by <span class="font-extrabold underline decoration-purple-600 text-purple-950">BHAVESH ❤️</span>
+      </p>
+      <p class="text-xs text-purple-700">
+        Specially handcrafted for <span class="font-extrabold">ANAMIKA 🐺💜</span>
+      </p>
+    </footer>
+
+  </main>
+
+
+  <!-- PHOTO GALLERY MODAL (8 PHOTOS) -->
+  <div id="photo-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-4xl w-full p-6 my-8 shadow-2xl border-4 border-purple-300 relative">
+      
+      <button onclick="closePhotoModal()" class="absolute top-4 right-4 w-10 h-10 bg-purple-100 text-purple-900 rounded-full font-bold hover:bg-purple-200 transition-all">
+        ✕
+      </button>
+
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-extrabold text-purple-900 font-poppins">Our 8 Romantic Memories 📸</h3>
+        <p class="text-xs text-gray-500">You can also upload your custom memories into these frames!</p>
+      </div>
+
+      <!-- 8 Photo Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <!-- Slot 1 to 8 -->
+        <script>
+          const defaultCaptions = [
+            "Your Cute Smile 🌸",
+            "English Songs Vibe 🎵",
+            "Our Romantic Moments 💕",
+            "My Pyari Wolf 🐺",
+            "BTS Forever Love 💜",
+            "31st Dec Proposal 💍",
+            "25th Jan First Kiss 💋",
+            "Forever & Always ❤️"
+          ];
+
+          for (let i = 1; i <= 8; i++) {
+            document.write(`
+              <div class="bg-purple-50 p-3 rounded-2xl border border-purple-200 shadow-sm text-center">
+                <div class="relative h-44 bg-purple-200 rounded-xl overflow-hidden group mb-2">
+                  <img id="modal-img-${i}" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <label for="modal-upload-${i}" class="cursor-pointer bg-white text-purple-900 text-[10px] font-bold px-2 py-1.5 rounded shadow">
+                      Change Photo
+                    </label>
+                    <input type="file" id="modal-upload-${i}" class="hidden" accept="image/*" onchange="previewModalImage(event, 'modal-img-${i}')">
+                  </div>
+                </div>
+                <p class="font-handwriting text-lg text-purple-900">${defaultCaptions[i-1]}</p>
+              </div>
+            `);
+          }
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- LOVE LETTER MODAL -->
+  <div id="letter-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-gradient-to-b from-purple-50 to-pink-50 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl border-4 border-purple-300 relative my-8 overflow-y-auto max-h-[90vh]">
+      
+      <button onclick="closeLetterModal()" class="absolute top-4 right-4 w-9 h-9 bg-purple-200 text-purple-900 rounded-full font-bold hover:bg-purple-300 transition-all">
+        ✕
+      </button>
+
+      <div class="text-center mb-4">
+        <span class="bg-purple-200 text-purple-900 font-bold text-xs uppercase px-3 py-1 rounded-full">From Bhavesh's Heart 💌</span>
+        <h3 class="font-wolfTitle text-4xl text-purple-900 mt-2">Meri Dearest Anamika,</h3>
+      </div>
+
+      <div class="space-y-3 text-xs md:text-sm text-gray-800 leading-relaxed font-medium">
+        <p>
+          <strong>Happy Birthday Meri Pyari Wolf! 🐺💜</strong>
+        </p>
+        <p>
+          Jab se tu meri life me aayi hai, har ek din ek khoobsurat dream jaisa lagta hai. Tumhara wo cute tarike se smile karna, english songs sunna, aur BTS ke gaano pe khush hona... Meri poori duniya bas tumse hi shuru hoti hai.
+        </p>
+        <p>
+          31st December ka propose day ho ya 25th January ka hamara first kiss day, har ek moment mere dil me hamesha ke liye locked hai. Aur haan, tumhara wo dialogue <em>"Chhodh do mere ko!"</em>... Aise kaise chhodh doon? Tu mere dil me rehti hai! 🙈
+        </p>
+        <p class="italic text-purple-900 bg-purple-100 p-3 rounded-xl border-l-4 border-purple-600">
+          "I promise to love you, protect you, and stand by your side forever & ever." 💜
+        </p>
+        <p>
+          Tu meri strength ho, mera sukoon ho. Enjoy your special birthday cutie!
+        </p>
+      </div>
+
+      <div class="mt-6 text-right font-handwriting text-2xl text-purple-900">
+        ~ Forever Yours, Bhavesh ❤️
+      </div>
+    </div>
+  </div>
+
+
+  <!-- INSIDE JOKE MODAL -->
+  <div id="joke-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border-4 border-purple-300">
+      <div class="w-16 h-16 bg-purple-100 rounded-full mx-auto flex items-center justify-center text-3xl mb-3">
+        😜
+      </div>
+      <h3 class="text-xl font-extrabold text-purple-900 mb-2">Aise Kaise Chhodh Do? 🙈</h3>
+      <p class="text-xs md:text-sm text-gray-700 leading-relaxed mb-6">
+        "Bhavesh tumhe kabhi nahi chhodega Anamika! You are stuck with me forever! Ab tum kahin nahi jaa sakti! 💜😜"
+      </p>
+      <button onclick="closeJokeModal()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold text-xs md:text-sm shadow hover:opacity-90 transition-all">
+        Aww, Samjh Gayi! 🥰
+      </button>
+    </div>
+  </div>
+
+
+  <!-- JAVASCRIPT LOGIC & AUDIO SYNTHESIS -->
+  <script>
+    /* Continuous Floating Upward Hearts Canvas */
+    const canvas = document.getElementById('hearts-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const hearts = [];
+    const heartColors = ['rgba(147, 51, 234, 0.6)', 'rgba(236, 72, 153, 0.6)', 'rgba(216, 180, 254, 0.7)', 'rgba(244, 114, 182, 0.6)'];
+
+    class Heart {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 50;
+        this.size = Math.random() * 14 + 8;
+        this.speedY = Math.random() * 1.5 + 0.8;
+        this.speedX = Math.sin(Math.random() * Math.PI) * 0.8;
+        this.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+        this.alpha = Math.random() * 0.7 + 0.3;
+      }
+
+      update() {
+        this.y -= this.speedY;
+        this.x += Math.sin(this.y / 30) * 0.5;
+        if (this.y < -20) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        const topCurveHeight = this.size * 0.3;
+        ctx.moveTo(0, topCurveHeight);
+        ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
+        ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
+        ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
+        ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      hearts.push(new Heart());
+    }
+
+    function animateHearts() {
+      ctx.clearRect(0, 0, width, height);
+      hearts.forEach(heart => {
+        heart.update();
+        heart.draw();
+      });
+      requestAnimationFrame(animateHearts);
+    }
+    animateHearts();
+
+
+    /* Romantic Guitar Acoustic Audio Synthesizer */
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyInterval = null;
+
+    function toggleMusic() {
+      const vinyl = document.getElementById('vinyl-disk');
+      const icon = document.getElementById('music-icon');
+
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (isPlaying) {
+        isPlaying = false;
+        vinyl.classList.add('paused-vinyl');
+        icon.className = 'fa-solid fa-play ml-0.5';
+        if (melodyInterval) clearInterval(melodyInterval);
+      } else {
+        isPlaying = true;
+        vinyl.classList.remove('paused-vinyl');
+        icon.className = 'fa-solid fa-pause';
+        playAcousticTrack();
+      }
+    }
+
+    function playAcousticTrack() {
+      // Gentle romantic acoustic chord progression (Until I Found You vibe)
+      const chords = [261.63, 329.63, 392.00, 523.25, 440.00, 349.23, 392.00];
+      let idx = 0;
+
+      melodyInterval = setInterval(() => {
+        if (!isPlaying || !audioCtx) return;
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'triangle'; // Soft acoustic string simulation
+        osc.frequency.setValueAtTime(chords[idx % chords.length], audioCtx.currentTime);
+
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1.2);
+
+        idx++;
+      }, 500);
+    }
+
+
+    /* Interactive Animation Triggers */
+    function triggerProposalAnimation() {
+      const el = document.getElementById('couple-popout');
+      el.classList.remove('hidden');
+      confetti({ particleCount: 30, spread: 50, origin: { y: 0.6 } });
+      setTimeout(() => {
+        el.classList.add('hidden');
+      }, 3500);
+    }
+
+    function triggerKissAnimation() {
+      const el = document.getElementById('girl-kiss-popout');
+      el.classList.remove('hidden');
+      confetti({ particleCount: 30, spread: 50, origin: { y: 0.6 } });
+      setTimeout(() => {
+        el.classList.add('hidden');
+      }, 3500);
+    }
+
+    function triggerJokeModal() {
+      document.getElementById('joke-modal').style.display = 'flex';
+    }
+    function closeJokeModal() {
+      document.getElementById('joke-modal').style.display = 'none';
+    }
+
+
+    /* Photo Gallery Modal Handlers */
+    function openPhotoModal() {
+      document.getElementById('photo-modal').style.display = 'flex';
+    }
+    function closePhotoModal() {
+      document.getElementById('photo-modal').style.display = 'none';
+    }
+    function previewModalImage(event, targetId) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById(targetId).src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+
+    /* Love Letter Modal Handlers */
+    function openLetterModal() {
+      document.getElementById('letter-modal').style.display = 'flex';
+      confetti({ particleCount: 50, spread: 70, origin: { y: 0.5 } });
+    }
+    function closeLetterModal() {
+      document.getElementById('letter-modal').style.display = 'none';
+    }
+
+
+    /* Love Percentage Calculator */
+    function calculateLove() {
+      const bar = document.getElementById('love-bar');
+      const result = document.getElementById('love-result');
+
+      bar.style.width = '100%';
+      bar.innerText = '100%';
+
+      setTimeout(() => {
+        result.classList.remove('hidden');
+        confetti({ particleCount: 100, spread: 80, origin: { y: 0.7 } });
+      }, 1000);
+    }
+
+
+    /* Interactive Gift Box */
+    function openGift() {
+      document.getElementById('gift-wrapper').style.display = 'none';
+      document.getElementById('gift-content').classList.remove('hidden');
+
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.7 },
+        colors: ['#9333ea', '#f472b6', '#fbbf24']
+      });
+    }
+  </script>
+</body>
+</html>
